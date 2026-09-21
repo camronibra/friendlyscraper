@@ -1,4 +1,4 @@
-# friendlyscraper
+# FriendlyScraper
 
 A web scraper for building text corpora. This was initially started and developed with the intention of eventually creating a scraper that is capable of scraping good quality data that is worth training LLMs on. Through fine-tuning open-source LLMs on low-resource language, my end goal would be to assist under-served communities in gaining recognition for the predominant languages that they may speak in their everyday lives. 
 
