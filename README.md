@@ -1,6 +1,8 @@
 # friendlyscraper
 
-A web scraper for building text corpora. This was initially started and developed with the intention of eventually creating a scraper that is capable of scraping good quality data that is worth training LLMs on. Through fine-tuning open-source LLMs on low-resource language, My end goal would be to assist under-served communities in gaining recognition for the predominant languages that they may speak in their everyday lives. For each source you supply the category pages, an article URL pattern (regex) and a CSS selector for the article text.
+A web scraper for building text corpora. This was initially started and developed with the intention of eventually creating a scraper that is capable of scraping good quality data that is worth training LLMs on. Through fine-tuning open-source LLMs on low-resource language, my end goal would be to assist under-served communities in gaining recognition for the predominant languages that they may speak in their everyday lives. 
+
+For each source you supply the category pages, an article URL pattern (regex) and a CSS selector for the article text.
 
 ## Quick start
     pip install -r requirements.txt
