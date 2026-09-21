@@ -1,13 +1,21 @@
-# FriendlyScraper📚
+# 📚 FriendlyScraper 
 
-A web scraper for building text corpora. This was initially started and developed with the intention of eventually creating a scraper that is capable of scraping good quality data that is worth training LLMs on. Through fine-tuning open-source LLMs on low-resource language, my end goal would be to assist under-served communities in gaining recognition for the predominant languages that they may speak in their everyday lives. 
+*A web scraper for building text corpora.* 
 
-For each source you supply the category pages, an article URL pattern (regex) and a CSS selector for the article text.
+## Why I built this project
+
+This started as an attempt to build a scraper capable of collecting high-quality data for training LLMs. My end goal is to fine-tune open-source models on low-resource languages as my own personal attempt at helping under-served communities gain recognition for the languages they speak every day.
 
 ## Quick start
-    pip install -r requirements.txt
-    python scraper.py
-Runs against the bundled sandbox site (e.g. books.toscrape.com, a site that is intended for scraping practice) and writes a JSONL file (takes one JSON object per line: url, text). The output filename is set in the source (as can be seen below).
+
+```bash
+pip install -r requirements.txt
+python scraper.py
+```
+Runs against the bundled sandbox site (e.g. books.toscrape.com, a site that is intended for scraping practice) and writes a JSONL file (takes one JSON object per line: url, text). The output filename is set in source.py.
+
+## How it works
+For each source, you supply the category pages, an article URL pattern (regex) and a CSS selector for the article text.
 
 ## Configuring a source
 Copy and paste the example from `source.py` into `sources_local.py` (gitignored, takes priority) and edit `name`, `base_url`, `category_urls`, `article_pattern` and `content_selector`.
