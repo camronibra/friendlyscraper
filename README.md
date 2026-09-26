@@ -36,7 +36,7 @@ Live web scraping is the current, small-scale mode. It is a testbed for sampling
 Not affiliated with any website scraped with it. Use only where a site's terms of service and the law permit. You are held responsible for your own compliance, including copyright. Provided as is, without warranty.
 
 ## Limitations and v2
-- You must supply the URL pattern and selector per site (planned: sitemap/RSS discovery and automatic article extraction)
+- You must supply the URL pattern and selector per site (planned: sitemap/RSS discovery and automatic article extraction).
 - No support for JS-rendered sites.
 - No retry/backoff on 429/503 responses.
 - Dari-vs-Persian classification is the current focus of active development.
