@@ -71,7 +71,7 @@ def fetch_page(url):
     delay = parser.crawl_delay(USER_AGENT) 
     
     if not parser.can_fetch(USER_AGENT, url):
-        print(f"Skipped (disallowed by robots.txt): {url}")
+        logger.info("Skipped by robots.txt: %s", url)
         return None
     else:
         try: 
@@ -80,7 +80,7 @@ def fetch_page(url):
             response.raise_for_status()
             return response.text
         except requests.RequestException as e:
-            print(f"Could not fetch {url}: {e}")
+            logger.warning("Could not fetch: %s: %s", url, e)
             return None
 
 def extract_article_text(html, source):
