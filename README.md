@@ -1,10 +1,12 @@
 # 📚 FriendlyScraper 
 
-*A web scraper for building text corpora.* 
+*A small scraper on a mission: stopping machines from misclassifying "low-resource" languages spoken by millions.* 
 
 ## Why I built this project
 
-This started as an attempt to build a scraper capable of collecting high-quality data for training LLMs. My end goal is to fine-tune open-source models on low-resource languages as my own personal attempt at helping under-served communities gain recognition for the languages they speak every day.
+Low-resource languages get routinely misclassified or lumped into a "dominant" relative in NLP tooling. Fixing that is the greater objective. 
+
+This scraper is the small first step: a rate-limited tool for pulling manageable text samples to test classification approaches on.
 
 ## Quick start
 
@@ -27,6 +29,9 @@ Copy and paste the example from `source.py` into `sources_local.py` (gitignored,
 - Stores the source URL with every article
 - Ships no scraped data
 
+## Scope
+Live web scraping is the current, small-scale mode. It is a testbed for sampling text, not intended to be scaled as-is. 
+
 ## Disclaimer
 Not affiliated with any website scraped with it. Use only where a site's terms of service and the law permit. You are held responsible for your own compliance, including copyright. Provided as is, without warranty.
 
@@ -34,7 +39,8 @@ Not affiliated with any website scraped with it. Use only where a site's terms o
 - You must supply the URL pattern and selector per site (planned: sitemap/RSS discovery and automatic article extraction)
 - No support for JS-rendered sites
 - No retry/backoff on 429/503 responses
-- Nothing verifies that scraped text is Dari rather than another Persian variety (yet)
+- Dari-vs-Persian classification is the current focus of active development
+- **v2 direction** live web crawling becomes an optional mode rather than the primary one. The main path shifts to identifying Dari-language text inside web archives (e.g. Common Crawl). This will use the same extraction and classification logic at a scale that live web scraping was never meant to reach. 
 
 ## Design decisions
 - Config-driven `Source` objects keep site-specific details out of the scraper logic
