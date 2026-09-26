@@ -5,6 +5,14 @@ from urllib.parse import urlparse, urljoin
 import json
 import urllib.robotparser
 from datetime import datetime, timezone
+import logging
+
+logging.basicConfig(
+    level = logging.INFO,
+    format = "%(asctime)s %(levelname)s %(message)s",
+)
+
+logger = logging.getLogger(__name__)
 
 try:
     from sources_local import SOURCES
@@ -60,22 +68,20 @@ def get_robot_parser(url):
 
 def fetch_page(url):
     parser = get_robot_parser(url)
-
+    delay = parser.crawl_delay(USER_AGENT) 
+    
     if not parser.can_fetch(USER_AGENT, url):
         print(f"Skipped (disallowed by robots.txt): {url}")
         return None
-
-    delay = parser.crawl_delay(USER_AGENT) or 0
-
-    try:
-        time.sleep(max(delay, DEFAULT_DELAY))
-        response = requests.get(url, headers=HEADERS, timeout=15)
-        response.raise_for_status()
-        return response.text
-
-    except requests.RequestException as e:
-        print(f"Could not fetch {url}: {e}")
-        return None
+    else:
+        try: 
+            time.sleep(max(delay or 0, DEFAULT_DELAY))
+            response = requests.get(url, headers=HEADERS, timeout=15)
+            response.raise_for_status()
+            return response.text
+        except requests.RequestException as e:
+            print(f"Could not fetch {url}: {e}")
+            return None
 
 def extract_article_text(html, source):
     soup = BeautifulSoup(html, "html.parser")
